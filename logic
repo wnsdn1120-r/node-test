@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int p, q, r;
+    char tf[2];   // 배열 사용
+    tf[0] = 'F';  // 0 -> F
+    tf[1] = 'T';  // 1 -> T
+
+    printf("p q r | ~q | (p ∧ r) | ~q ∧ (p ∧ r)\n");
+    printf("-----------------------------------------\n");
+
+    for (p = 1; p >= 0; p--) {
+        for (q = 1; q >= 0; q--) {
+            for (r = 1; r >= 0; r--) {
+                int nq = !q;
+                int pr = p && r;
+                int res = nq && pr;
+                
+                    printf("%c %c %c | %c | %c | %c\n", tf[p], tf[q], tf[r], tf[nq], tf[pr], tf[res]);
+            }
+        }
+    }
+    return 0;
+}
