@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int A[4] = {0,2,4,6};
+    int B[3] = {2,4,6};
+    int C[4] = {1,4,5,7};
+    int s;
+    int first = 1;
+
+    printf("(A ∩ B) U C = {");
+    //(A ∩ B)
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (A[i] == B[j]) {
+                if (first != 1) printf(",");
+                printf("%d", A[i]);
+                first = 0;
+            }
+        }
+    }
+
+    for (int i = 0; i < 4; i++) {
+        s = 0;
+        for (int j = 0; j < 4; j++) {
+            for (int k = 0; k < 3; k++) {
+                if (C[i] == A[j] && A[j] == B[k]) {
+                    s = 1;
+                }
+            }
+        }
+        if (s == 0) {
+            if (first != 1) printf(",");
+            printf("%d", C[i]);
+            first = 0;
+        }
+    }
+
+    printf("}\n");
+    return 0;
+}
